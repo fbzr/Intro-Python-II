@@ -4,6 +4,7 @@ class Room:
     def __init__(self, name, description):
         self.__set_name(name)
         self.__set_description(description)
+        self.__set_items([])
     
     def __get_name(self):
         return self._name
@@ -41,9 +42,16 @@ class Room:
     def __set_w_to(self, room):
         self._w_to = room
 
+    def __get_items(self):
+        return self._items
+    
+    def __set_items(self, items):
+        self._items = items
+
     name = property(__get_name, __set_name)
     description = property(__get_description, __set_description)
     n_to = property(__get_n_to, __set_n_to)
     s_to = property(__get_s_to, __set_s_to)
     e_to = property(__get_e_to, __set_e_to)
     w_to = property(__get_w_to, __set_w_to)
+    items = property(__get_items, __set_items)

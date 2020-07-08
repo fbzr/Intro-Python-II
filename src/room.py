@@ -48,10 +48,13 @@ class Room:
     def __set_items(self, items):
         self._items = items
 
+    def add_item(self, item):
+        self._items.append(item)
+
     name = property(__get_name, __set_name)
     description = property(__get_description, __set_description)
     n_to = property(__get_n_to, __set_n_to)
     s_to = property(__get_s_to, __set_s_to)
     e_to = property(__get_e_to, __set_e_to)
     w_to = property(__get_w_to, __set_w_to)
-    items = property(__get_items, __set_items)
+    items = property(__get_items)

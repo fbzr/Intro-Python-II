@@ -49,6 +49,7 @@ player = Player(name, room['outside'])
 
 user_input = ''
 error = False
+invalid_move = False
 while user_input != "q":
     if error:
         print("\nInvalid input, try again")
@@ -58,23 +59,18 @@ while user_input != "q":
     
     user_input = input("\nWhere would you like to go?\n[n] Nort\n[s] South\n[e] East\n[w] West\n\n[q] Quit\n\n").lower()
 
-    try:
-        if user_input == "n":
-            error = False
-            player.current_room = player.current_room.n_to
-        elif user_input == "s":
-            error = False
-            player.current_room = player.current_room.s_to
-        elif user_input == "e":
-            error = False
-            player.current_room = player.current_room.e_to
-        elif user_input == "w":
-            error = False
-            player.current_room = player.current_room.w_to
-        elif user_input != "q":
-            error = True
-    except AttributeError:
-        print("Nothing there, try again")
+    error = False
+
+    if user_input == "n":
+        player.current_room = player.current_room.n_to
+    elif user_input == "s":
+        player.current_room = player.current_room.s_to
+    elif user_input == "e":
+        player.current_room = player.current_room.e_to
+    elif user_input == "w":
+        player.current_room = player.current_room.w_to
+    elif user_input != "q":
+        error = True
 
 # Write a loop that:
 #

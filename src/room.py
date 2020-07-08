@@ -2,59 +2,58 @@
 # description attributes.
 class Room:
     def __init__(self, name, description):
-        self.__set_name(name)
-        self.__set_description(description)
-        self.__set_items([])
-    
-    def __get_name(self):
-        return self._name
-    
-    def __set_name(self, name):
         self._name = name
-
-    def __get_description(self):
-        return self._description
-    
-    def __set_description(self, description):
         self._description = description
-    
-    def __get_n_to(self):
+        self._items = []
+        self._n_to = None
+        self._s_to = None
+        self._e_to = None
+        self._w_to = None
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def description(self):
+        return self._description
+
+    @property
+    def items(self):
+        return self._items
+
+    @property
+    def n_to(self):
         return self._n_to
 
-    def __set_n_to(self, room):
-        self._n_to = room
-
-    def __get_s_to(self):
+    @property
+    def s_to(self):
         return self._s_to
 
-    def __set_s_to(self, room):
-        self._s_to = room
-    
-    def __get_e_to(self):
-        return self.e_to
+    @property
+    def e_to(self):
+        return self._e_to
 
-    def __set_e_to(self, room):
+    @property
+    def w_to(self):
+        return self._w_to
+    
+    @n_to.setter
+    def n_to(self, room):
+        self._n_to = room
+
+    @s_to.setter
+    def s_to(self, room):
+        self._s_to = room
+
+    @e_to.setter
+    def e_to(self, room):
         self._e_to = room
 
-    def __get_w_to(self):
-        return self._w_to
-
-    def __set_w_to(self, room):
+    @w_to.setter
+    def w_to(self, room):
         self._w_to = room
 
-    def __get_items(self):
-        return self._items
+    def add_item(self, new_item):
+        self._items.append(new_item)
     
-    def __set_items(self, items):
-        self._items = items
-
-    def add_item(self, item):
-        self._items.append(item)
-
-    name = property(__get_name, __set_name)
-    description = property(__get_description, __set_description)
-    n_to = property(__get_n_to, __set_n_to)
-    s_to = property(__get_s_to, __set_s_to)
-    e_to = property(__get_e_to, __set_e_to)
-    w_to = property(__get_w_to, __set_w_to)
-    items = property(__get_items)

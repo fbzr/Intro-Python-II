@@ -24,3 +24,8 @@ class Player:
 
     def add_item(self, item):
         self._items.append(item)
+        item.on_take()
+
+    def remove_item(self, item):
+        self._items.remove(item)
+        item.on_drop()

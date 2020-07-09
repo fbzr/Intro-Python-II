@@ -111,20 +111,19 @@ while playing:
         if (u_input == "take" or u_input == "get"):
             selected_item = next((i for i in player.current_room.items if i.name.lower() == user_input[1].lower()), None)
             if selected_item:
-                player.items.append(selected_item)
+                player.add_item(selected_item)
                 player.current_room.items.remove(selected_item)
-                selected_item.on_take()
                 if (selected_item.name.lower() == "treasure"):
                     input("Congratulations!!! You WON" if playing else "")
                     playing = False
+                else: input()
             else:
                 valid_item = False
         elif u_input == "drop":
             selected_item = next((i for i in player.items if i.name.lower() == user_input[1].lower()), None)
             if selected_item:
                 player.current_room.items.append(selected_item)
-                player.items.remove(selected_item)
-                selected_item.on_drop()
+                player.remove_item(selected_item)
                 input()
             else:
                 valid_item = False

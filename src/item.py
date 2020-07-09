@@ -18,3 +18,9 @@ class Item:
     @description.setter
     def description(self, description):
         self._description = description
+
+    def on_take(self):
+        print(f"You have picked up {self.name}")
+
+    def on_drop(self):
+        print(f"You have dropped {self.name}")
